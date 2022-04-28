@@ -22,13 +22,13 @@ Console.WriteLine(Submarine.ToString());
 Console.WriteLine("----------------------------------------------------------------------------------------------------------------");
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //Create object of DrivingType
-DrivingType Car = new DrivingType(4, 60, 150, Vehicle.Interfaces.IEnvironment.environments.land, Vehicle.Interfaces.IVehicle.StartVehicle.Started, Vehicle.Interfaces.IUnits.SpeedUnits.kmph);
+DrivingType Car = new DrivingType(4, 150, 0, Vehicle.Interfaces.IEnvironment.environments.land, Vehicle.Interfaces.IVehicle.StartVehicle.Started, Vehicle.Interfaces.IUnits.SpeedUnits.kmph);
 //Prints Info
 Console.WriteLine(Car.ToString());
 //Method testing (only those which are characteristic for DrivingType)
 Car.GetState();
-Car.Accelerate(50);
-Car.Decelerate(50);
+/*Car.Accelerate(Car.TargetSpeed);*/
+Car.Decelerate(Car.TargetSpeed);
 Car.ChangeEnvironment();
 ////////////////////
 List<DrivingType> DrivingVehicles = new List<DrivingType>();
@@ -43,11 +43,13 @@ Console.WriteLine(Tank.ToString());
 Console.WriteLine("----------------------------------------------------------------------------------------------------------------");
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //Create object of FlyingType
-FlyingType Helicopter = new FlyingType(0,50,1000);
+FlyingType Helicopter = new FlyingType(0, 5000, 1000);
 //Prints Info
 Console.WriteLine(Helicopter.ToString());
 //Method testing (only those which are characteristic for FlyingType)
-Helicopter.FlyUp(1000);
+Helicopter.FlyUp(Helicopter.TargetHeight);
+Helicopter.FlyDown(Helicopter.TargetHeight);
+
 ////////////////////
 List<FlyingType> FlyingVehicles = new List<FlyingType>();
 FlyingType Airplane = new FlyingType(22, 1000, 4000);

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Vehicle.Interfaces;
+﻿using Vehicle.Interfaces;
 
 namespace Vehicle.Classes
 {
@@ -17,8 +12,8 @@ namespace Vehicle.Classes
         }
 
         public int CurrentSpeed { get; set; }
-        public int SpeedMax { get => 350; } 
-        public int SpeedMin { get => 0; } 
+        public int SpeedMax { get => 350; }
+        public int SpeedMin { get => 0; }
         public int TargetSpeed { get; set; }
 
 
@@ -37,43 +32,46 @@ namespace Vehicle.Classes
             this.isStarted = isStarted;
             this.unit = unit;
         }
-        public DrivingType()
-        {
-
-        }
+        public DrivingType() { }
         public IUnits.SpeedUnits GetUnit() => unit;
-        public void Accelerate(int CurrentSpeed)
+        public void Accelerate(int TargetSpeed)
         {
-            CurrentSpeed = this.CurrentSpeed;
+            TargetSpeed = this.TargetSpeed;
 
             if (isStarted == IVehicle.StartVehicle.Started)
             {
-                while (CurrentSpeed != TargetSpeed && CurrentSpeed < SpeedMax)
+                if (CurrentSpeed == TargetSpeed)
                 {
-                    Console.WriteLine($"Your current speed is: {CurrentSpeed +=10}{IUnits.SpeedUnits.kmph}"); 
-                }              
+                    Console.WriteLine($"Your current speed is: {CurrentSpeed}{IUnits.SpeedUnits.kmph}");
+                }
+                while (CurrentSpeed < TargetSpeed)
+                {
+                    Console.WriteLine($"Your current speed is: {CurrentSpeed += 10}{IUnits.SpeedUnits.kmph}");
+                }
             }
-           
-            Console.WriteLine($"Your current speed is: {CurrentSpeed}{IUnits.SpeedUnits.kmph}");
-
         }
 
-        public void Decelerate(int CurrentSpeed)
+        public void Decelerate(int TargetSpeed)
         {
-            CurrentSpeed = this.CurrentSpeed;
+            TargetSpeed = this.TargetSpeed;
 
             if (isStarted == IVehicle.StartVehicle.Started)
             {
-                while (CurrentSpeed != TargetSpeed && CurrentSpeed > SpeedMin)
+                if (CurrentSpeed == TargetSpeed)
+                {
+                    Console.WriteLine($"Your current speed is: {CurrentSpeed}{IUnits.SpeedUnits.kmph}");
+                }
+                while (CurrentSpeed > TargetSpeed)
                 {
                     Console.WriteLine($"Your current speed is: {CurrentSpeed -= 10}{IUnits.SpeedUnits.kmph}");
                 }
+
+                if (CurrentSpeed == 0)
+                {
+                    Console.WriteLine("You stopped!");
+                }
             }
-
-
-            Console.WriteLine($"Your current speed is: {CurrentSpeed}{IUnits.SpeedUnits.kmph}");
         }
-      
 
         public void ChangeEnvironment()
         {
@@ -100,7 +98,7 @@ namespace Vehicle.Classes
 
         public override string ToString()
         {
-            return $"Number of wheels: {Wheels} , Current speed: {CurrentSpeed}{IUnits.SpeedUnits.kmph}, Max speed of this vehicle is: {SpeedMax}{IUnits.SpeedUnits.kmph}, Min speed of this vehicle is: {SpeedMin}{IUnits.SpeedUnits.kmph}, Your target speed is: {TargetSpeed}{IUnits.SpeedUnits.kmph}, Current environment is: {currentEnvironment}, Your vehicle is: {IVehicle.StartVehicle.Stopped}";
+            return $"Number of wheels: {Wheels} , Current speed: {CurrentSpeed}{IUnits.SpeedUnits.kmph}, Max speed of this vehicle is: {SpeedMax}{IUnits.SpeedUnits.kmph}, Min speed of this vehicle is: {SpeedMin}{IUnits.SpeedUnits.kmph}, Your target speed is: {TargetSpeed}{IUnits.SpeedUnits.kmph}, Current environment is: {currentEnvironment}, Your vehicle is: {isStarted}";
         }
 
     }

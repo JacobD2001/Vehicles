@@ -11,15 +11,10 @@ namespace Vehicle.Interfaces
         enum StartVehicle { Started, Stopped }
         StartVehicle GetState ();
         int CurrentSpeed { get; set; }
-
         int SpeedMax { get;}
         int SpeedMin { get;}
         int TargetSpeed { set; }
-        void Accelerate(int CurrentSpeed);
-        void Decelerate(int CurrentSpeed);
-       
-        
-
-
+        void Accelerate(int TargetSpeed);
+        void Decelerate(int TargetSpeed);
     }
 }

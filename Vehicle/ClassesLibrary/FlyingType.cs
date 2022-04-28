@@ -35,45 +35,50 @@ namespace Vehicle.Classes
 
             TargetHeight = this.TargetHeight;
 
+        
+
             if (isStarted == IVehicle.StartVehicle.Started)
             {
-                while (CurrentHeight != TargetHeight)
+                if (CurrentHeight == TargetHeight)
                 {
-                    Console.WriteLine($"Your current height is: {TargetHeight -= 50} { IUnits.SpeedUnits.meters}");   
+                    Console.WriteLine($"Your current height is: {CurrentHeight} { IUnits.SpeedUnits.meters}");
+                }
+
+                while (CurrentHeight > TargetHeight)
+                {
+                    Console.WriteLine($"Your current height is: {CurrentHeight -= 50} { IUnits.SpeedUnits.meters}");   
                     
                 }
-            }
-            Console.WriteLine($"Your current height is: {TargetHeight} { IUnits.SpeedUnits.meters}");
 
-            if (CurrentHeight == 0)
-            {
-                Console.WriteLine("You landed!");
+                if (CurrentHeight == 0)
+                {
+                    Console.WriteLine("You landed!");
+                }
             }
-            else
-            {
-                Console.WriteLine($"Your current height is: {TargetHeight} { IUnits.SpeedUnits.meters}");
-            }
+  
         }
 
         public void FlyUp(int TargetHeight)
         {
-            
+
             TargetHeight = this.TargetHeight;
 
             if (isStarted == IVehicle.StartVehicle.Started)
             {
-                while (CurrentHeight != TargetHeight)
+                if (CurrentHeight == TargetHeight)
                 {
-                    Console.WriteLine($"Your current height is: {TargetHeight += 50} { IUnits.SpeedUnits.meters}");
-                    
-                    
+                   Console.WriteLine($"Your current height is: {CurrentHeight} { IUnits.SpeedUnits.meters}");
                 }
+                while (CurrentHeight < TargetHeight)
+                {
+                    Console.WriteLine($"Your current height is: {CurrentHeight += 50} { IUnits.SpeedUnits.meters}");
+
+
+                }
+     
+               
             }
-            else
-            {
-                Console.WriteLine($"Your current height is: {TargetHeight} { IUnits.SpeedUnits.meters}");
-            }
-            
+   
         }
     
         public override string ToString()
