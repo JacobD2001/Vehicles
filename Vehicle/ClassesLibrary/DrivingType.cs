@@ -16,11 +16,9 @@ namespace Vehicle.Classes
         public int SpeedMin { get => 0; }
         public int TargetSpeed { get; set; }
 
-
         public IEnvironment.environments currentEnvironment;
         public IVehicle.StartVehicle isStarted; //we create new variable
         public IVehicle.StartVehicle GetState() => isStarted;
-
         public IUnits.SpeedUnits unit; //we create new variable
 
         public DrivingType(int wheels, int currentSpeed, int targetSpeed, IEnvironment.environments currentEnvironment, IVehicle.StartVehicle isStarted, IUnits.SpeedUnits unit)
@@ -50,7 +48,6 @@ namespace Vehicle.Classes
                 }
             }
         }
-
         public void Decelerate(int TargetSpeed)
         {
             TargetSpeed = this.TargetSpeed;
@@ -72,7 +69,6 @@ namespace Vehicle.Classes
                 }
             }
         }
-
         public void ChangeEnvironment()
         {
             Console.Write("To what environment? land/water/sky: ");
@@ -95,11 +91,9 @@ namespace Vehicle.Classes
                 Console.WriteLine($"Currently you are in {toSky}");
             }
         }
-
         public override string ToString()
         {
             return $"Number of wheels: {Wheels} , Current speed: {CurrentSpeed}{IUnits.SpeedUnits.kmph}, Max speed of this vehicle is: {SpeedMax}{IUnits.SpeedUnits.kmph}, Min speed of this vehicle is: {SpeedMin}{IUnits.SpeedUnits.kmph}, Your target speed is: {TargetSpeed}{IUnits.SpeedUnits.kmph}, Current environment is: {currentEnvironment}, Your vehicle is: {isStarted}";
         }
-
     }
 }

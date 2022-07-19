@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Vehicle.Classes
 {
     internal class Engine
-    {
+   {
         public enum FuelType {Gasoline,Electric,LPG,Diesel,Hybrid }
         FuelType fuelType { get; }
         int HorsePower { get; }
@@ -16,6 +16,5 @@ namespace Vehicle.Classes
         {
             return $"Engine is powered by {fuelType} and horsepower of the engine is {HorsePower}";
         }
-
     }
 }

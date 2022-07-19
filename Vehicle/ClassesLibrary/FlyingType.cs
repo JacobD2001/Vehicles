@@ -10,12 +10,10 @@ namespace Vehicle.Classes
     {
         
         public new int SpeedMax { get => 200; }
-        public new int SpeedMin { get => 20; }
-        
+        public new int SpeedMin { get => 20; } 
         int IFly.MetersAboveGround { get; set; }
         public int TargetHeight { get; set; }
         public int CurrentHeight { get; set; }
-
         public new int CurrentSpeed;
         public int MaxHeight = 14000;
         public int MinHeight = 0;
@@ -29,7 +27,6 @@ namespace Vehicle.Classes
             CurrentSpeed = currentSpeed;
             
         }
-
         public void FlyDown(int TargetHeight)
         {
 
@@ -80,12 +77,10 @@ namespace Vehicle.Classes
             }
    
         }
-    
+
         public override string ToString()
         {
             return $"Number of wheels: {Wheels} , Current speed: {CurrentSpeed}{IUnits.SpeedUnits.mps}, Max speed of this vehicle is: {SpeedMax}{IUnits.SpeedUnits.mps},\n Min speed of this vehicle is: {SpeedMin}{IUnits.SpeedUnits.mps}, Your target speed is: {TargetSpeed}{IUnits.SpeedUnits.mps}, Current environment is: {IEnvironment.environments.sky},\n Your vehicle is: {isStarted}, your current height is: {CurrentHeight}{IUnits.SpeedUnits.meters}, your target height is: {TargetHeight}{IUnits.SpeedUnits.meters}";
         }
-
-
     }
 }
